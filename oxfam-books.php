@@ -23,6 +23,6 @@ function register_oxfam_books_submenu_page() {
 	);
 }
 function oxfam_books_submenu_page_callback() {
-	echo '<h3>Oxfam Secondhand books</h3>';
+	include_once __DIR__ . "/views/book.php";
 }
 add_action('admin_menu', 'register_oxfam_books_submenu_page',99);
