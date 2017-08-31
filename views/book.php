@@ -9,18 +9,18 @@
 <h3>Oxfam Secondhand books</h3>
 <div>
 	<div>
-		<input name="title" type="text" value="<?php echo $title?>" disabled>
+		<input name="title" type="text" value="<?php echo $title?>" disabled class="oxfam-input">
 	</div>
 	<div>
-		<input name="authors" type="text" value="<?php echo $authors?>" disabled>
+		<input name="authors" type="text" value="<?php echo $authors?>" disabled class="oxfam-input">
 	</div>
 	<div>
-		<input name="isbn10" type="text" value="<?php echo $isbn10?>" disabled>
+		<input name="isbn10" type="text" value="<?php echo $isbn10?>" disabled class="oxfam-input">
 	</div>
 	<div>
-		<input name="isbn13" type="text" value="<?php echo $isbn13?>" disabled>
+		<input name="isbn13" type="text" value="<?php echo $isbn13?>" disabled class="oxfam-input">
 	</div>
 	<div>
-		<input name="description" type="text" value="<?php echo $description?>" disabled>
+        <textarea name="description" disabled class="oxfam-input"><?php echo $description?></textarea>
 	</div>
 </div>
