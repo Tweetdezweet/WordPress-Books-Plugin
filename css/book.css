@@ -1,5 +1,29 @@
+.oxfam-fixed {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%
+}
+.oxfam-dynamic {
+    display: none;
+}
 
-.oxfam-input{
-    background-color: yellow;
-    width: 500px;
+.oxfam-left-column {
+    float: left;
+    width: 50%;
+}
+
+.oxfam-right-column {
+    float: right;
+    width: 50%;
+}
+
+.oxfam-spacer {
+    float: left;
+    width: 25%;
+}
+
+.oxfam-confirm-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
