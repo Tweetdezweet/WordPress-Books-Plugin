@@ -18,6 +18,7 @@ class OxfamBook {
 				'title' => $post->post_title,
 				'subtitle' => $product_attributes['subtitle']['value'],
 				'authors' => $product_attributes['authors']['value'],
+				'language' => $product_attributes['language']['value'],
 				'description' => $post->post_content,
 				'pageCount' => $product_attributes['page_count']['value'],
 				'publishedDate' => $product_attributes['published_date']['value'],

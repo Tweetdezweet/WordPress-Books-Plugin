@@ -42,6 +42,7 @@ class OxfamGoogleBookApi {
 				'title' => $item['volumeInfo']['title'],
 				'subtitle' => $item['volumeInfo']['subtitle'],
 				'authors' => $item['volumeInfo']['authors'],
+				'language' => $item['volumeInfo']['language'],
 				'description' => $item['volumeInfo']['description'],
 				'pageCount' => $item['volumeInfo']['pageCount'],
 				'publishedDate' => $item['volumeInfo']['publishedDate'],
