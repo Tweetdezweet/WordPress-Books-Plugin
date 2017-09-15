@@ -4,7 +4,7 @@
     width: 50%
 }
 .oxfam-dynamic {
-    display: none;
+    /*display: none;*/
 }
 
 .oxfam-left-column {
@@ -26,4 +26,13 @@
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+}
+.oxfam-col {
+    border-style: solid;
+}
+.oxfam-col-truncated {
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

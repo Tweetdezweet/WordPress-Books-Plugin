@@ -28,17 +28,12 @@ class OxfamAdminPages {
 	function oxfam_books_submenu_page_callback() {
 		include_once __DIR__ . '/../views/book.php';
 	}
-
-	function oxfam_google_api_settingspage_callback() {
-		echo 'test';
-	}
-
 	function add_stylesheets() {
-		wp_enqueue_style( 'oxfam_stylesheet', plugin_dir_url( __FILE__) . 'css/book.css' );
+		wp_enqueue_style( 'oxfam_stylesheet', plugin_dir_url( __FILE__) . '../css/book.css' );
 	}
 
 	function add_scripts() {
-		wp_enqueue_script( 'oxfam_script', plugin_dir_url( __FILE__) . 'js/book.js' );
+		wp_enqueue_script( 'oxfam_script', plugin_dir_url( __FILE__) . '../js/book.js' );
 		wp_enqueue_script( 'jquery' );
 	}
 

@@ -42,9 +42,11 @@ class OxfamGoogleBookApi {
 				'title' => $item['volumeInfo']['title'],
 				'subtitle' => $item['volumeInfo']['subtitle'],
 				'authors' => $item['volumeInfo']['authors'],
-				'language' => $item['volumeInfo']['language'],
 				'description' => $item['volumeInfo']['description'],
+				'language' => $item['volumeInfo']['language'],
 				'pageCount' => $item['volumeInfo']['pageCount'],
+				'maturityRating' => $item['volumeInfo']['maturityRating'],
+				'categories' => $item['volumeInfo']['categories'],
 				'publishedDate' => $item['volumeInfo']['publishedDate'],
 			);
 			array_push( $response, $item_response );
