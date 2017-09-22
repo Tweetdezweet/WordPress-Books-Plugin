@@ -11,7 +11,15 @@ jQuery(document).ready(function( $ ) {
     var pageCountInputField = jQuery("#oxfam-pagecount");
     var maturityRatingInputField = jQuery("#oxfam-maturityrating");
     var categoriesInputField = jQuery("#oxfam-categories");
+    var publishedDateInputField = jQuery("#oxfam-publisheddate");
     var priceInputField = jQuery("#oxfam-price");
+
+    jQuery("#oxfam-confirm").on( 'click', function() {
+        var data =
+        jQuery.post( 'http://localhost:8000/wp-admin/admin-ajax.php?action=addtostock', data, function() {
+
+        } );
+    });
 
 
     listTable.on('click', 'tr.oxfam-row', function() {
@@ -25,6 +33,7 @@ jQuery(document).ready(function( $ ) {
         pageCountInputField.val( jQuery('#oxfam-r' + selectedRow + '-pageCount').text() );
         maturityRatingInputField.val( jQuery('#oxfam-r' + selectedRow + '-maturityRating').text() );
         categoriesInputField.val( jQuery('#oxfam-r' + selectedRow + '-categories').text() );
+        publishedDateInputField.val( jQuery('#oxfam-r' + selectedRow + '-publishedDate').text() );
         priceInputField.val( jQuery('#oxfam-r' + selectedRow + '-price').text() );
     });
 

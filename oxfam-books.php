@@ -15,5 +15,5 @@ Domain Path: /languages
 require_once __DIR__ . '/includes/class-oxfam-book-search.php';
 require_once __DIR__ . '/includes/class-oxfam-admin-pages.php';
 
-new \oxfambooks\OxfamBookSearch();
+new \oxfambooks\OxfamBookSearch( new \oxfambooks\OxfamBook(), new \oxfambooks\OxfamGoogleBookApi() );
 new \oxfambooks\OxfamAdminPages();

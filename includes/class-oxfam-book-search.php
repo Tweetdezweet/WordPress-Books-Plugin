@@ -16,9 +16,9 @@ class OxfamBookSearch {
 	private $google_api;
 	private $oxfam_book;
 
-	public function __construct() {
-		$this->google_api = new OxfamGoogleBookApi();
-		$this->oxfam_book = new OxfamBook();
+	public function __construct( $primary_resource, $secondary_resource ) {
+		$this->oxfam_book = $primary_resource;
+		$this->google_api = $secondary_resource;
 
 		add_action( 'wp_ajax_searchbookbyisbn', array( $this, 'get_books_by_isbn') );
 	}

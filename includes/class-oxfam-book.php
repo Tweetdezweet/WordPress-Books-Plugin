@@ -4,11 +4,12 @@ namespace oxfambooks;
 
 class OxfamBook {
 
+	public function __construct() {
+		add_action( 'wp_ajax_addtostock', array( $this, 'add_to_stock' ) );
+	}
+
 	public function search_by_isbn( $isbn ) {
 		$product_id = \wc_get_product_id_by_sku( $isbn );
-		/*echo '<pre>';
-		var_dump( $product_id);
-		echo '</pre>'; die;*/
 
 		if( $product_id != 0 ) {
 			$product_attributes = get_post_meta( $product_id, '_product_attributes', true );
@@ -27,5 +28,9 @@ class OxfamBook {
 		} else {
 			return array();
 		}
+	}
+
+	public function add_to_stock( $data ) {
+
 	}
 }
