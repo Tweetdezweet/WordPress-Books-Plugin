@@ -2,6 +2,7 @@ jQuery(document).ready(function( $ ) {
 
     var scannedIsbn = jQuery("#scanned-isbn");
     var listTable = jQuery("#oxfam-list-table");
+    var listTableBody = jQuery("#oxfam-list-table tbody");
 
     var titleInputField = jQuery("#oxfam-title");
     var subtitleInputField = jQuery("#oxfam-subtitle");
@@ -41,9 +42,10 @@ jQuery(document).ready(function( $ ) {
         var results = jQuery.get(
             'http://localhost:8000/wp-admin/admin-ajax.php?action=searchbookbyisbn&isbn=' + scannedIsbn.val(),
             function(result){
+                listTableBody.empty();
+
                 var counter = 0;
                 result.data.forEach( function(element) {
-                    //console.log( element['maturityRating'] );
                     var title = element['title'] ? element['title'] : '';
                     var subtitle = element['subtitle'] ? element['subtitle'] : '';
                     var authors = element['authors'] ? element['authors'].toString() : '';
