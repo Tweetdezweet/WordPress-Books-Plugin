@@ -20,21 +20,24 @@
     </table>
 </div>
 <div class="oxfam-dynamic oxfam-detail-container">
-        <div class="oxfam-left-column">
-            Title: <input type="text" id="oxfam-title" /><br />
-            Subtitle: <input type="text" id="oxfam-subtitle" /><br />
-            Authors: <input type="text" id="oxfam-authors" /><br />
-            Description: <textarea class="oxfam-textarea" id="oxfam-description"></textarea>
-        </div>
-        <div class="oxfam-right-column">
-            Language: <input type="text" id="oxfam-language" /><br />
-            PageCount: <input type="text" id="oxfam-pagecount" /><br />
-            Maturity rating: <input type="text" id="oxfam-maturityrating" /><br />
-            Categories: <input type="text" id="oxfam-categories" /><br />
-            Published date: <input type="text" id="oxfam-publisheddate" />
-            Price: <input type="text" id="oxfam-price" />
-        </div>
-        <div class="oxfam-middle oxfam-confirm-container">
-            <button class="oxfam-confirm-button" id="oxfam-confirm">Confirm</button>
-        </div>
+    <div>
+        Product id: <input type="text" id="oxfam-post-id" disabled />
+    </div>
+    <div class="oxfam-left-column">
+        Title: <input type="text" id="oxfam-title" /><br />
+        Subtitle: <input type="text" id="oxfam-subtitle" /><br />
+        Authors: <input type="text" id="oxfam-authors" /><br />
+        Description: <textarea class="oxfam-textarea" id="oxfam-description"></textarea>
+    </div>
+    <div class="oxfam-right-column">
+        Language: <input type="text" id="oxfam-language" /><br />
+        PageCount: <input type="text" id="oxfam-pagecount" /><br />
+        Maturity rating: <input type="text" id="oxfam-maturityrating" /><br />
+        Categories: <input type="text" id="oxfam-categories" /><br />
+        Published date: <input type="text" id="oxfam-publisheddate" />
+        Price: <input type="text" id="oxfam-price" />
+    </div>
+    <div class="oxfam-middle oxfam-confirm-container">
+        <button class="oxfam-confirm-button" id="oxfam-confirm">Confirm</button>
+    </div>
 </div>

@@ -4,6 +4,7 @@ jQuery(document).ready(function( $ ) {
     var listTable = jQuery("#oxfam-list-table");
     var listTableBody = jQuery("#oxfam-list-table tbody");
 
+    var postIdInputField = jQuery("#oxfam-post-id");
     var titleInputField = jQuery("#oxfam-title");
     var subtitleInputField = jQuery("#oxfam-subtitle");
     var authorsInputField = jQuery("#oxfam-authors");
@@ -16,10 +17,22 @@ jQuery(document).ready(function( $ ) {
     var priceInputField = jQuery("#oxfam-price");
 
     jQuery("#oxfam-confirm").on( 'click', function() {
-        var data =
+        var data = {
+            'postId' : postIdInputField.val(),
+            'isbn' : scannedIsbn.val(),
+            'title' : titleInputField.val(),
+            'subtitle' : subtitleInputField.val(),
+            'authors' : authorsInputField.val(),
+            'description' : descriptionTextArea.val(),
+            'language' : languageInputField.val(),
+            'pageCount' : pageCountInputField.val(),
+            'maturityRating' : maturityRatingInputField.val(),
+            'categories' : categoriesInputField.val(),
+            'publishedDate' : publishedDateInputField.val(),
+            'price' : priceInputField.val()
+        };
         jQuery.post( 'http://localhost:8000/wp-admin/admin-ajax.php?action=addtostock', data, function() {
-
-        } );
+        }, 'json' );
     });
 
 
@@ -44,36 +57,51 @@ jQuery(document).ready(function( $ ) {
             function(result){
                 listTableBody.empty();
 
-                var counter = 0;
-                result.data.forEach( function(element) {
-                    var title = element['title'] ? element['title'] : '';
-                    var subtitle = element['subtitle'] ? element['subtitle'] : '';
-                    var authors = element['authors'] ? element['authors'].toString() : '';
-                    var description = element['description'] ? element['description'] : '';
-                    var language = element['language'] ? element['language'] : '';
-                    var pageCount = element['pageCount'] ? element['pageCount'] : '';
-                    var maturityRating = element['maturityRating'] ? element['maturityRating'] : '';
-                    var categories = element['categories'] ? element['categories'].toString() : '';
-                    var publishedDate = element['publishedDate'] ? element['publishedDate'] : '';
-                    var price = element['price'] ? element['price'] : '';
+                if( Array.isArray( result.data ) ) {
+                    var counter = 0;
+                    result.data.forEach( function(element) {
+                        var title = element['title'] ? element['title'] : '';
+                        var subtitle = element['subtitle'] ? element['subtitle'] : '';
+                        var authors = element['authors'] ? element['authors'].toString() : '';
+                        var description = element['description'] ? element['description'] : '';
+                        var language = element['language'] ? element['language'] : '';
+                        var pageCount = element['pageCount'] ? element['pageCount'] : '';
+                        var maturityRating = element['maturityRating'] ? element['maturityRating'] : '';
+                        var categories = element['categories'] ? element['categories'].toString() : '';
+                        var publishedDate = element['publishedDate'] ? element['publishedDate'] : '';
+                        var price = element['price'] ? element['price'] : '';
 
 
-                    var newRow = '<tr id="oxfam-list-' + counter + '" class="oxfam-row" >';
-                    newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-title">' + title + '</td>';
-                    newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-subtitle">' + subtitle + '</td>';
-                    newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-authors">' + authors + '</td>';
-                    newRow = newRow + '<td class="oxfam-col"><div class="oxfam-col-truncated" id="oxfam-r' + counter + '-description">' + description + '</div></td>';
-                    newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-language">' + language + '</td>';
-                    newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-pageCount">' + pageCount + '</td>';
-                    newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-maturityRating">' + maturityRating + '</td>';
-                    newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-categories">' + categories + '</td>';
-                    newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-publishedDate">' + publishedDate + '</td>';
-                    newRow = newRow + '<td class="oxfam-col" id="oxfam-r\' + counter + \'-price">' + price + '</td>';
-                    newRow = newRow + '</tr>';
+                        var newRow = '<tr id="oxfam-list-' + counter + '" class="oxfam-row" >';
+                        newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-title">' + title + '</td>';
+                        newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-subtitle">' + subtitle + '</td>';
+                        newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-authors">' + authors + '</td>';
+                        newRow = newRow + '<td class="oxfam-col"><div class="oxfam-col-truncated" id="oxfam-r' + counter + '-description">' + description + '</div></td>';
+                        newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-language">' + language + '</td>';
+                        newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-pageCount">' + pageCount + '</td>';
+                        newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-maturityRating">' + maturityRating + '</td>';
+                        newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-categories">' + categories + '</td>';
+                        newRow = newRow + '<td class="oxfam-col" id="oxfam-r' + counter + '-publishedDate">' + publishedDate + '</td>';
+                        newRow = newRow + '<td class="oxfam-col" id="oxfam-r\' + counter + \'-price">' + price + '</td>';
+                        newRow = newRow + '</tr>';
 
-                    listTable.append( newRow );
-                    counter++;
-                } );
+                        listTable.append( newRow );
+                        counter++;
+                    } );
+                } else {
+                    postIdInputField.val( result.data.post_id);
+                    titleInputField.val( result.data.title );
+                    subtitleInputField.val( result.data.subtitle );
+                    authorsInputField.val( result.data.authors );
+                    descriptionTextArea.val( result.data.description );
+                    languageInputField.val( result.data.language );
+                    pageCountInputField.val( result.data.pageCount );
+                    maturityRatingInputField.val( result.data.maturityRating );
+                    //categories.val( result.data.categories );
+                    publishedDateInputField.val( result.data.publishedDate );
+                    priceInputField.val( result.data.price );
+                }
+
             }
         );
 
